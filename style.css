@@ -123,6 +123,12 @@
     cursor: pointer;
     transition: background-color 0.2s ease;
     z-index: 2;
+    text-decoration: none;
+}
+
+.login-button:visited {
+    color: white;
+    text-decoration: none;
 }
 
 

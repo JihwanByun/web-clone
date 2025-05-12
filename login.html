@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+
+    <style>
+        .container {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .login-items {
+            top: 20%;
+            width: 40%;
+        }
+
+        .login-item {
+            margin: 40px;
+        }
+
+        .login-item input {
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="login-items">
+            <div class="login-item">
+                <div class="login-email">Email</div>
+                <input id="email">
+            </div>
+
+            <div class="login-item">
+                <div class="login-password">Password</div>
+                <input id="password">
+            </div>
+
+            <div class="login-item">
+                <div class="login-birth">Birth</div>
+                <input id="birth">
+            </div>
+
+            <div class="login-item">
+                <div class="login-contact">Contact</div>
+                <input id="contact">
+            </div>
+        </div>
+        
+        <div class="button-signup">
+            <button id="signup">회원가입하기</button>
+        </div>
+        
+    </div>
+</body>
+</html>
