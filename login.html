@@ -27,37 +27,94 @@
         .login-item input {
             width: 100%;
         }
+
+        .button-signup {
+            display: flex;
+            justify-content: center;
+        }
+
+        #email-msg {
+            display: flex;
+            justify-content: right;
+            font-size: 13px;
+        }
+
+        #password-msg {
+            display: flex;
+            justify-content: right;
+            font-size: 13px;
+        }
+
+        .valid {
+            border: 2px solid green;
+        }
+
+        .invalid {
+            border: 2px solid red;
+        }
+
     </style>
 </head>
 
-<body>
-    <div class="container">
-        <div class="login-items">
-            <div class="login-item">
-                <div class="login-email">Email</div>
-                <input id="email">
-            </div>
+    <body>
+        <div class="container">
+            <div class="login-items">
+                    <div class="login-item">
+                        <div class="login-email">Email</div>
+                        <input id="email" type="text">
+                        <br>
+                        <div id="email-msg">이메일을 입력하라고요.</div>
+                    </div>
 
-            <div class="login-item">
-                <div class="login-password">Password</div>
-                <input id="password">
-            </div>
-
-            <div class="login-item">
-                <div class="login-birth">Birth</div>
-                <input id="birth">
-            </div>
-
-            <div class="login-item">
-                <div class="login-contact">Contact</div>
-                <input id="contact">
+                    <div class="login-item">
+                        <div class="login-password">Password</div>
+                        <input id="password" type="password">
+                        <br>
+                        <div id="password-msg">비밀번호를 입력하라고요.</div>
+                    </div>
+                
+                    <div class="button-signup">
+                        <button onclick="login()" type="submit" id="login">로그인하기</button>
+                    </div>
             </div>
         </div>
-        
-        <div class="button-signup">
-            <button id="signup">회원가입하기</button>
-        </div>
-        
-    </div>
-</body>
+
+
+        <script>
+            const email = document.getElementById('email');
+            const password = document.getElementById('password');
+            const emailMsg = document.getElementById('email-msg');
+            const passwordMsg = document.getElementById('password-msg');
+
+
+            // 이메일 정규식
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            // 비밀번호: 영문 숫자 포함, 8자 이상
+            const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
+                
+            function login() {
+
+                const storedUser = JSON.parse(localStorage.getItem('user'));
+                
+                if (storedUser && storedUser.email === email.value && storedUser.password === password.value) {
+                    alert('로그인 성공!');
+                    window.location.href='main.html';
+                } else {
+                    alert('아이디 또는 비밀번호 다시 입력해라 이녀석아');
+                }
+            }
+
+            email.addEventListener('input', () => {
+                if(emailRegex.test(email.value)) {
+                    emailMsg.innerText='올바른 형식이야';
+                    email.classList.add('valid');
+                    email.classList.remove('invalid');
+                } else {
+                    emailMsg.innerText='그거 아니야 형식 지켜야지?';
+                    email.classList.add('invalid');
+                    email.classList.remove('valid');
+                }
+            });
+        </script>
+    </body>
 </html>
